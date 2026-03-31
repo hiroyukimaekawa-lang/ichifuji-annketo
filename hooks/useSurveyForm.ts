@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react';
-import firestore from '@react-native-firebase/firestore';
 
 import { CONFIG } from '@/constants/config';
 import type { SurveyAnswer, SurveyFormErrors, SurveyFormState } from '@/types/survey';
@@ -65,17 +64,15 @@ export function useSurveyForm(initialStaff?: string) {
         score: form.score,
         purpose: form.purpose,
         language: form.language,
-        submittedAt: firestore.Timestamp.now(),
+        submittedAt: new Date(),
         isHighScore: form.score >= CONFIG.highScoreThreshold,
         staffName: form.staffName,
       };
 
-      await firestore().collection('surveys').add(payload);
-
       return {
         success: true,
         isHighScore: payload.isHighScore,
-        submittedAt: payload.submittedAt.toDate().toISOString(),
+        submittedAt: payload.submittedAt.toISOString(),
       } as const;
     } catch (error) {
       return { success: false, error } as const;

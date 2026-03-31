@@ -52,11 +52,6 @@ export default function ThanksHighScreen() {
           </Text>
         </Pressable>
 
-        <Pressable className="mt-5" onPress={() => Linking.openURL(CONFIG.tabelogUrl)}>
-          <Text className="font-noto text-[15px] font-bold text-[#2DAA6E]">
-            食べログで応援する ›
-          </Text>
-        </Pressable>
         </View>
       </View>
     </SafeAreaView>

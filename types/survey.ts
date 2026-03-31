@@ -1,10 +1,8 @@
-import type { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
-
 export interface SurveyAnswer {
   score: number;
   purpose: string;
   language: string;
-  submittedAt: FirebaseFirestoreTypes.Timestamp;
+  submittedAt: Date;
   isHighScore: boolean;
   staffName: string | null;
 }
